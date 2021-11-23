@@ -34,10 +34,9 @@ const UserInfo = () => {
 
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
-
   const [isDarkModeActivated, setIsDarkModeActivated] = useState(getTheme() === THEME_TYPES.DARK);
 
-  const user = getUserInformation() || { userName: "", tenant: "", profile: "" };
+  const user = getUserInformation();
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);

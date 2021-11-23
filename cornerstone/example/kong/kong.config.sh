@@ -77,14 +77,11 @@ createService "${1}" "${2}"
 createRoute "${1}" "${1}_route" "${3}" "${4}"
 }
 
-# service: gui
+# service: cornerstone-gui
+
+#createEndpoint "gui" "http://172.19.0.1:3001"  '"/"' "false"
 
 createEndpoint "gui" "http://cornerstone-gui:3001"  '"/"' "false"
-
-# service: gui-v2
-
-#createEndpoint "gui-v2" "http://gui-v2:80"  '"/v2"' "true"
-
 
 # service: data-broker
 

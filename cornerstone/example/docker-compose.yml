@@ -1,21 +1,18 @@
-version: '3.8'
+version: "3.8"
 services:
-
   cornerstone-gui:
     build:
       context: ./../
       dockerfile: ./Dockerfile
       args:
-        BUILDER_MENU_ITENS: '[flows,dashboard]'
-        # Only requests to use the Dashboard GUI
+        BUILDER_MENU_ITENS: "[flows,dashboard]"
+        # Services that will be shown in the GUI
     restart: always
-    ports:
-      - "3001:3001"
     logging:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   history:
     image: dojot/history:v0.6.0
@@ -23,14 +20,14 @@ services:
     depends_on:
       - mongodb
     environment:
-      FALCON_SETTINGS_MODULE: 'history.settings.docker'
-      DOJOT_MANAGEMENT_USER: 'history'
+      FALCON_SETTINGS_MODULE: "history.settings.docker"
+      DOJOT_MANAGEMENT_USER: "history"
       LOG_LEVEL: INFO
     logging:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   persister:
     image: dojot/persister:v0.6.0
@@ -41,15 +38,15 @@ services:
       - kafka
       - data-broker
     environment:
-      FALCON_SETTINGS_MODULE: 'history.settings.docker'
-      DOJOT_MANAGEMENT_USER: 'persister'
-      KAFKA_GROUP_ID: 'persister-group'
+      FALCON_SETTINGS_MODULE: "history.settings.docker"
+      DOJOT_MANAGEMENT_USER: "persister"
+      KAFKA_GROUP_ID: "persister-group"
       LOG_LEVEL: INFO
     logging:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   mongodb:
     image: dojot/mongo:3.2
@@ -65,7 +62,7 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
     volumes:
       - mongodb-volume:/data/db
       - mongodb-cfg-volume:/data/configdb
@@ -77,7 +74,7 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   data-broker:
     image: dojot/data-broker:v0.6.0
@@ -87,18 +84,18 @@ services:
       - data-broker-redis
       - auth
     environment:
-      DOJOT_MANAGEMENT_USER: 'data-broker'
-      KAFKA_GROUP_ID: 'data-broker-group'
+      DOJOT_MANAGEMENT_USER: "data-broker"
+      KAFKA_GROUP_ID: "data-broker-group"
       SERVICE_PORT: ${DATA_BROKER_SERVICE_PORT}
-      DATA_BROKER_URL: 'http://data-broker:${DATA_BROKER_SERVICE_PORT}'
-      LOG_LEVEL: 'info'
+      DATA_BROKER_URL: "http://data-broker:${DATA_BROKER_SERVICE_PORT}"
+      LOG_LEVEL: "info"
       KAFKA_NUM_PARTITIONS: 1
       KAFKA_REPLICATION_FACTOR: 1
     logging:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   data-broker-redis:
     image: dojot/redis:5.0.5-alpine3.10
@@ -109,7 +106,7 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   device-manager:
     image: dojot/device-manager:v0.6.0
@@ -133,7 +130,7 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   device-manager-redis:
     image: dojot/redis:5.0.5-alpine3.10
@@ -144,7 +141,7 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   postgres:
     image: dojot/postgres:9.5.21-alpine
@@ -166,7 +163,7 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   # Prepare database, Bootstrap the database
   kong-migrations:
@@ -187,11 +184,11 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   # Run any new migrations and Finish running any pending migrations after 'up'.
   kong-migrations-up:
-    image:  dojot/kong:v0.6.0
+    image: dojot/kong:v0.6.0
     command: kong migrations up && kong migrations finish
     depends_on:
       postgres:
@@ -208,7 +205,7 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   apigw:
     image: dojot/kong:v0.6.0
@@ -238,7 +235,7 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   kong-config:
     image: dojot/appropriate-curl
@@ -252,7 +249,7 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   auth:
     image: dojot/auth:v0.6.0
@@ -264,19 +261,19 @@ services:
     environment:
       AUTH_DB_HOST: "postgres"
       AUTH_DB_USER: "auth"
-      AUTH_DB_PWD:  "auth"
+      AUTH_DB_PWD: "auth"
       AUTH_KONG_URL: "http://apigw:8001"
       AUTH_CACHE_HOST: "auth-redis"
       # This is used to select the type of cache to be used.
       # Allowed values are "redis" or "nocache"
       AUTH_CACHE_NAME: "redis"
-      DOJOT_MANAGEMENT_USER: 'auth'
-      KAFKA_GROUP_ID: 'auth-group'
+      DOJOT_MANAGEMENT_USER: "auth"
+      KAFKA_GROUP_ID: "auth-group"
     logging:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   auth-redis:
     image: dojot/redis:5.0.5-alpine3.10
@@ -287,8 +284,7 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
-
+        max-file: "5"
 
   zookeeper:
     image: "confluentinc/cp-zookeeper:5.5.0"
@@ -316,7 +312,7 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   kafka:
     image: confluentinc/cp-kafka:5.5.0
@@ -342,7 +338,7 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
   backstage:
     image: dojot/backstage:v0.6.0
@@ -353,7 +349,7 @@ services:
       driver: json-file
       options:
         max-size: 20m
-        max-file: '5'
+        max-file: "5"
 
 volumes:
   postgres-volume:

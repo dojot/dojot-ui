@@ -20,7 +20,7 @@ export const clearUserData = () => {
 };
 
 export const getUserInformation = () => ({
-  userName: localStorage.getItem("USER_USER"),
-  tenant: localStorage.getItem("USER_TENANT"),
-  profile: localStorage.getItem("USER_PROFILE"),
+  userName: localStorage.getItem("USER_USER") || "",
+  tenant: localStorage.getItem("USER_TENANT") || "",
+  profile: localStorage.getItem("USER_PROFILE") || "",
 });

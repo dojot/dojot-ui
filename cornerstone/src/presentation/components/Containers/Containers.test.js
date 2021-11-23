@@ -28,7 +28,7 @@ describe("Containers unit tests", () => {
 
   it("should to able simple render the ViewContainer ", () => {
     const { container } = render(
-      <ViewContainer headerTitle={"title"} setIsMenuOpen={null} isMenuOpen />,
+      <ViewContainer headerTitle={"title"} setIsMenuOpen={() => null} isMenuOpen />,
     );
 
     expect(container).toBeInTheDocument();

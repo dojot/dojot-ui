@@ -65,16 +65,9 @@ const DrawerComponent = ({ isMenuOpen, menuItems }) => {
   );
 };
 
-DrawerComponent.defaultProps = {
-  location: { pathname: "" },
-};
-
 DrawerComponent.propTypes = {
   menuItems: PropTypes.array.isRequired,
   isMenuOpen: PropTypes.bool.isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-  }),
 };
 
 export default DrawerComponent;
