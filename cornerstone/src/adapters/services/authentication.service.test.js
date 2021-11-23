@@ -1,5 +1,4 @@
 import * as api from "./graphql.api";
-import * as loginActions from "../localStorage/login.localStorage";
 
 import * as authenticationService from "./authentication.service";
 

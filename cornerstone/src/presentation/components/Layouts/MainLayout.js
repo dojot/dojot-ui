@@ -34,10 +34,12 @@ const MainLayout = ({ headerTitle, children }) => {
 };
 
 MainLayout.propTypes = {
+  headerTitle: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 };
 
 MainLayout.defaultProps = {
+  headerTitle: "",
   children: null,
 };
 

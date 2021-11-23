@@ -10,6 +10,11 @@
     "es6": true,
     "node": true
   },
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    // Required for certain syntax usages
+    "ecmaVersion": 2020
+  },
   "plugins": [],
   "extends": [
     "prettier",
@@ -22,6 +27,7 @@
   "rules": {
     "no-param-reassign": "off",
     "import/prefer-default-export": "off",
+    "import/extensions": ["off", { "json": "always" }],
     "import/no-unresolved": [0, { "commonjs": true, "amd": true }],
     "comma-dangle": [
       0,
@@ -35,6 +41,7 @@
     ],
     "object-curly-newline": "off",
     "quotes": ["error", "double"],
+    "implicit-arrow-linebreak": "off",
     "arrow-parens": ["warn", "always"],
     "jsx-a11y/anchor-is-valid": [
       "error",

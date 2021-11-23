@@ -6,7 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { getThemeSchema, THEME_TYPES } from "./presentation/themes";
 
 import { history } from "./app-history";
-import RoutesComponent from "./application/routing/RoutesComponent";
+import { RoutesComponent } from "./presentation/views/routing";
 import { getTheme, setTheme } from "./adapters/localStorage/theme.localStorage";
 import "./presentation/utils/i18n";
 
@@ -16,10 +16,13 @@ const App = () => {
   // this could be a useLocalStorage hook.
   useEffect(() => {
     setTheme(THEME_TYPES.LIGHT);
-    window.addEventListener("storage", (e) => {
-      console.log("storage changed!", getTheme());
+    const listener = () => {
+      //  console.log("storage changed!", getTheme());
       setThemeColor(getTheme());
-    });
+    };
+    window.addEventListener("storage", listener);
+
+    return window.removeEventListener("storage", listener, false);
   }, []);
 
   return (

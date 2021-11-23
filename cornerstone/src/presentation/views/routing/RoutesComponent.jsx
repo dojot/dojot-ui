@@ -1,25 +1,30 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 import { Navigate, Route, Routes } from "react-router-dom";
 
-import { isAuthenticated } from "../../adapters/localStorage/login.localStorage";
+import { isAuthenticated } from "../../../adapters/localStorage/login.localStorage";
 
-import { MainLayout } from "../../presentation/components/Layouts";
+import { MainLayout } from "../../components/Layouts";
 
-import routes from "./currentRoutes";
+import routes from "../../../application/routing/currentRoutes";
 
-const LogIn = React.lazy(() => import("../../presentation/views/login/Login"));
+const LogIn = React.lazy(() => import("../login/Login"));
 
-function RequireAuth({ children }) {
-  let isAuth = isAuthenticated();
-  console.log("redirectTo");
+const RequireAuth = ({ children }) => {
+  const isAuth = isAuthenticated();
   return isAuth ? children : <Navigate to="/login" />;
-}
+};
 
-/* TIP: tem como passar attrs={props} para os
- containers do MFE. */
-console.log("routes", routes);
+RequireAuth.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+};
 
+RequireAuth.defaultProps = {
+  children: null,
+};
+
+/* TIP: is possible to pass attrs={props} to containers from MFE. */
 const RoutesComponent = () => (
   <React.Suspense fallback={<div>Loading...</div>}>
     <Routes>

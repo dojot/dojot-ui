@@ -12,8 +12,7 @@ jest.mock("react-router-dom", () => ({
   Redirect: jest.fn((options) => <div>{options.to.pathname}</div>),
 }));
 
-const DEFAULT_JWT =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlNVV1Z1NleVIzcTVKM2ZJdGFtNFc5bWVZSkMzaUZSOCIsImlhdCI6MTYxNTQ5NTYwOCwiZXhwIjoxNjE1NDk2MDI4LCJwcm9maWxlIjoiYWRtaW4iLCJncm91cHMiOlsxXSwidXNlcmlkIjoyLCJqdGkiOiJlNzkwZTliMzcxYmRlOWJmZTFhZGUxMmNmNDU5NzI0MSIsInNlcnZpY2UiOiJhZG1pbiIsInVzZXJuYW1lIjoiY3BxZCJ9.cOZFIqPMydtaLX9gwxlR3WTmGbWkT18t2WsPaYpLu_g";
+const DEFAULT_JWT = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -39,9 +38,9 @@ const submitFormikForm = async (nativeFormWrapper) => {
 };
 
 const setUserAndSubmit = async (wrapper, user, pass) => {
-  const userField = wrapper.find('input[name="user"]');
+  const userField = wrapper.find("input[name='user']");
   await updateFormikField(userField, "user", user);
-  const passwordField = wrapper.find('input[name="password"]');
+  const passwordField = wrapper.find("input[name='password']");
   await updateFormikField(passwordField, "password", pass);
   const htmlForm = wrapper.find("form");
 
@@ -56,7 +55,7 @@ describe("Login", () => {
   it("shoud be show characters minimum message", async () => {
     const wrapper = mount(<Login />);
     await setUserAndSubmit(wrapper, "c", "c");
-    const passwordField = wrapper.find('p[id="password-helper-text"]');
+    const passwordField = wrapper.find("p[id='password-helper-text']");
 
     expect(passwordField.text()).toEqual("login:characters_minimum");
   });

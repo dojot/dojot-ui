@@ -5,7 +5,7 @@ import "@testing-library/jest-dom/extend-expect";
 
 import RootContainer from "./RootContainer";
 import ContentContainer from "./ContentContainer";
-import ViewContainer from "./ContentContainer";
+import ViewContainer from "./ViewContainer";
 
 describe("Containers unit tests", () => {
   it("should to able simple render the RootContainer ", () => {

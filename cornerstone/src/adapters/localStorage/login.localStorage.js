@@ -3,7 +3,8 @@ export const isAuthenticated = () => localStorage.getItem("TOKEN_KEY") !== null;
 export const getToken = () => localStorage.getItem("TOKEN_KEY");
 
 export const login = (token) => {
-  const [generalInfo, userInfo, check] = token.split(".");
+  // Token information: generalInfo, userInfo, check
+  const [, userInfo] = token.split(".");
   const { profile, service, username } = JSON.parse(atob(userInfo));
   localStorage.setItem("USER_PROFILE", profile);
   localStorage.setItem("USER_TENANT", service);
