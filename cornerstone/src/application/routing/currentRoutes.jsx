@@ -1,24 +1,23 @@
-/* eslint-disable */
 import React from "react";
 
 /* importing MFE Applications */
-let Home = React.lazy(() =>
+const Home = React.lazy(() =>
   import("guinx/Home").catch((err) => {
-    console.log(err.message);
+    console.error(err.message);
     return import("../../presentation/views/notFound/notFound");
   }),
 );
 
-let Dashboard = React.lazy(() =>
+const Dashboard = React.lazy(() =>
   import("guinx/App").catch((err) => {
-    console.log(err.message);
+    console.error(err.message);
     return import("../../presentation/views/notFound/notFound");
   }),
 );
 
-let Flows = React.lazy(() =>
+const Flows = React.lazy(() =>
   import("guinx/App").catch((err) => {
-    console.log(err.message);
+    console.error(err.message);
     return import("../../presentation/views/notFound/notFound");
   }),
 );

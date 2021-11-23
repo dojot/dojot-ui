@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { getThemeSchema, THEME_TYPES } from "./presentation/themes";
@@ -11,25 +11,24 @@ import { getTheme, setTheme } from "./adapters/localStorage/theme.localStorage";
 import "./presentation/utils/i18n";
 
 const App = () => {
-  const [themeColor, setThemeColor] = useState(THEME_TYPES.LIGHT);
+  const [themeColor, setThemeColor] = useState(getTheme());
 
   // this could be a useLocalStorage hook.
   useEffect(() => {
     setTheme(THEME_TYPES.LIGHT);
     const listener = () => {
-      //  console.log("storage changed!", getTheme());
       setThemeColor(getTheme());
     };
     window.addEventListener("storage", listener);
 
-    return window.removeEventListener("storage", listener, false);
+    return window.removeEventListener("storage", listener, true);
   }, []);
 
   return (
     <ThemeContainer currentThemeSchema={getThemeSchema(themeColor)}>
-      <BrowserRouter history={history}>
+      <HashRouter history={history}>
         <RoutesComponent />
-      </BrowserRouter>
+      </HashRouter>
     </ThemeContainer>
   );
 };

@@ -27,6 +27,18 @@ The Cornerstone-GUI is responsible for providing a solid structure to be used in
 
 This code is based on Micro Front-end Architecture, using the module-federation plugin by webpack v5.
 
+The basic structure of a MFE application is:
+
+| Key        | Description           | Example                                    | Type   |
+| ---------- | --------------------- | ------------------------------------------ | ------ |
+| id         | Unique identifier     | dashboard                                  | string |
+| remoteName | Component name        | dashboard                                  | string |
+| address    | URL to remoteEntry.js | guinx@http://localhost:3003/remoteEntry.js | string |
+
+There are 2 types of MFE applications compatible with the Cornerstone-GUI, internal and external applications.
+The Internal applications is configured inside this container (in builder/config.json);
+Unfortunately, until this moment, we do not support the second type of application, external MFE applications.
+
 ## Dependencies
 
 As the new approach to Dojot GUI's, this service doesn't need any dependecies.
@@ -38,7 +50,7 @@ As the new approach to Dojot GUI's, this service doesn't need any dependecies.
 
 ### Present Drawbacks
 
--
+- Supporting external MFE application;
 
 ## Running the Application
 
