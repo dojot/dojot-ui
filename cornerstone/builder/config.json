@@ -1,47 +1,40 @@
-[{
+[
+  {
     "id": "dashboard",
     "remoteName": "guinx",
-    "address": "guinx",
-    "is_visible": false
-},
-{
+    "address": "guinx"
+  },
+  {
     "id": "templates",
     "remoteName": "dashboard",
-    "address": "dashboard@http://localhost:3003/remoteEntry.js",
-    "is_visible": false
-},
-
-{
+    "address": "dashboard@http://localhost:3003/remoteEntry.js"
+  },
+  {
     "id": "flows",
     "remoteName": "guinx2",
-    "address": "guinx2",
-    "is_visible": false
-},
+    "address": "guinx2"
+  },
 
-{
+  {
     "id": "notifications",
     "remoteName": "guinx",
-    "address": "guinx",
-    "is_visible": false
-},
+    "address": "guinx"
+  },
 
-{
+  {
     "id": "profiles",
     "remoteName": "guinx",
-    "address": "guinx",
-    "is_visible": false
-},
+    "address": "guinx"
+  },
 
-{
+  {
     "id": "users",
     "remoteName": "guinx",
-    "address": "guinx",
-    "is_visible": false
-},
-{
+    "address": "guinx"
+  },
+  {
     "id": "home",
     "remoteName": "guinx",
-    "address": "guinx",
-    "is_visible": false
-}  
+    "address": "guinx"
+  }
 ]

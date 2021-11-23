@@ -2,12 +2,11 @@
 
 [![License badge](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Docker badge - cornerstone-gui](https://img.shields.io/docker/pulls/dojot/cornerstone-gui.svg)](https://hub.docker.com/r/dojot/cornerstone-gui/)
-[![CodeFactor](https://www.codefactor.io/repository/github/dojot/dojot-ui/badge)](https://www.codefactor.io/repository/github/dojot/dojot-ui/cornerstone/badge) 
+[![CodeFactor](https://www.codefactor.io/repository/github/dojot/dojot-ui/badge)](https://www.codefactor.io/repository/github/dojot/dojot-ui/cornerstone/badge)
 
-[![codecov](https://codecov.io/gh/dojot/dojot-ui/cornerstone/branch/development/graph/badge.svg)](https://codecov.io/gh/dojot/dojot-ui/cornerstone) 
+[![codecov](https://codecov.io/gh/dojot/dojot-ui/cornerstone/branch/development/graph/badge.svg)](https://codecov.io/gh/dojot/dojot-ui/cornerstone)
 
-[![Docker badge](https://img.shields.io/docker/pulls/dojot/cornerstone-gui.svg)](https://hub.docker.com/r/dojot/cornerstone-gui/) 
-
+[![Docker badge](https://img.shields.io/docker/pulls/dojot/cornerstone-gui.svg)](https://hub.docker.com/r/dojot/cornerstone-gui/)
 
 The Cornerstone-GUI is responsible for providing a solid structure to be used in microfrontend Dojot's ecosystem. This project is composed by 2 services, as being: the Builder, responsable to create the routes/menu/configurations used in Microfrontend; and the UI itself, a WEB user interface that requests dynamically all new dojot's functionality, based in MFE Architecture and Webpack Module Federation.
 
@@ -26,15 +25,11 @@ The Cornerstone-GUI is responsible for providing a solid structure to be used in
 
 ## Overview
 
-This code is based on Micro Front-end Architecture, using the module-federation plugin by webpack v5. 
-
-### Builder
-
-### UI
+This code is based on Micro Front-end Architecture, using the module-federation plugin by webpack v5.
 
 ## Dependencies
 
-As the new approach to Dojot GUI's, this service doesn't need any dependecies. 
+As the new approach to Dojot GUI's, this service doesn't need any dependecies.
 
 ## Roadmap
 
@@ -43,7 +38,7 @@ As the new approach to Dojot GUI's, this service doesn't need any dependecies.
 
 ### Present Drawbacks
 
-- 
+-
 
 ## Running the Application
 
@@ -67,24 +62,25 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-
 ### Configurations
 
 Before running the **Cornerstone GUI** service within your environment, make sure you configure the
 environment variables to match your needs.
- 
+
 #### UI Configurations
 
-| Key  | Purpose             | Default Value  | Valid Values |
-| ---- | ------------------- | -------------- | ------------ |
-| host | Address to access Dojot | localhost | string       |
-| port | Port to access Dojot | localhost | integer       |
-
+| Key  | Purpose                 | Default Value | Valid Values |
+| ---- | ----------------------- | ------------- | ------------ |
+| host | Address to access Dojot | localhost     | string       |
+| port | Port to access Dojot    | localhost     | integer      |
 
 #### Builder Configurations
 
 The builder configuration must be available in the build environment. To archive this, is possible send the env variables through docker-compose.yml as shown in the example file.
 
+| Key                | Purpose                                | Default Value | Valid Values    |
+| ------------------ | -------------------------------------- | ------------- | --------------- |
+| BUILDER_MENU_ITENS | Services to be used in the application | '[dashboard]' | array of string |
 
 #### Generating Docker
 
@@ -106,7 +102,6 @@ docker push <username>/cornerstone-gui:<tag>
 ```
 
 **NOTE THAT** you can use the official image provided by dojot in its [DockerHub page](https://hub.docker.com/r/dojot/cornerstone-gui).
-
 
 ## Documentation
 
