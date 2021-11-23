@@ -1,0 +1,56 @@
+{
+  "globals": {
+    "localStorage": true,
+    "GUI_VERSION": true,
+    "__CONFIG__": true
+  },
+  "env": {
+    "browser": true,
+    "jest": true,
+    "es6": true,
+    "node": true
+  },
+  "plugins": [],
+  "extends": [
+    "prettier",
+    "airbnb-base",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:security/recommended"
+  ],
+  "rules": {
+    "no-param-reassign": "off",
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": [0, { "commonjs": true, "amd": true }],
+    "comma-dangle": [
+      0,
+      {
+        "arrays": "always",
+        "objects": "never",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ],
+    "object-curly-newline": "off",
+    "quotes": ["error", "double"],
+    "arrow-parens": ["warn", "always"],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to", "hrefLeft", "hrefRight"],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
+      }
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 2,
+        "maxBOF": 1,
+        "maxEOF": 0
+      }
+    ]
+  }
+}

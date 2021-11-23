@@ -1,0 +1,17 @@
+{
+  "env": "default",
+  "host": "0.0.0.0",
+  "port": "8080",
+  "apiUrl": "",
+  "publicPath": "/",
+  "assetPath": "assets",
+  "jsSourcePath": "src",
+  "html": [
+    {
+      "name": "homepage",
+      "title": "Dojot - Do IoT",
+      "template": "_default.html",
+      "filename": "index.html"
+    }
+  ]
+}

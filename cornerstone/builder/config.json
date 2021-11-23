@@ -1,0 +1,47 @@
+[{
+    "id": "dashboard",
+    "remoteName": "guinx",
+    "address": "guinx",
+    "is_visible": false
+},
+{
+    "id": "templates",
+    "remoteName": "dashboard",
+    "address": "dashboard@http://localhost:3003/remoteEntry.js",
+    "is_visible": false
+},
+
+{
+    "id": "flows",
+    "remoteName": "guinx2",
+    "address": "guinx2",
+    "is_visible": false
+},
+
+{
+    "id": "notifications",
+    "remoteName": "guinx",
+    "address": "guinx",
+    "is_visible": false
+},
+
+{
+    "id": "profiles",
+    "remoteName": "guinx",
+    "address": "guinx",
+    "is_visible": false
+},
+
+{
+    "id": "users",
+    "remoteName": "guinx",
+    "address": "guinx",
+    "is_visible": false
+},
+{
+    "id": "home",
+    "remoteName": "guinx",
+    "address": "guinx",
+    "is_visible": false
+}  
+]
