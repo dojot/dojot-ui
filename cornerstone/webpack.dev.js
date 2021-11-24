@@ -12,6 +12,12 @@ const BUNDLE_NAME = "cornerstone";
 module.exports = {
   entry: "./src/index",
   mode: "development",
+  devtool: "source-map",
+
+  optimization: {
+    minimize: false,
+  },
+
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name].bundle.js",
@@ -19,7 +25,7 @@ module.exports = {
   },
   devServer: {
     static: path.join(__dirname, "dist"),
-    port: 3001,
+    port: 3000,
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
@@ -29,10 +35,9 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)?$/,
-        exclude: /node_modules/,
         loader: "babel-loader",
+        exclude: /node_modules/,
         options: {
-          cacheDirectory: true,
           presets: [
             [
               "@babel/preset-env",
@@ -69,15 +74,11 @@ module.exports = {
     new ModuleFederationPlugin({
       // The Name used for module federation plugin will be "cornerstone"
       name: BUNDLE_NAME,
-      library: { type: "var", name: BUNDLE_NAME },
       // The initial file loaded by the other applications, in this case, will
       // be the remoteEntry.js
       filename: "remoteEntry.js",
       remotes: remoteList,
-      exposes: {
-        // The exposed component (in cornerstone/App).
-        "./App": "./src/App",
-      },
+      exposes: {},
       shared: {
         // Here we are setting up the shared dependencies for all applications.
         // react-router-dom, react-dom and react will be singletons

@@ -2,7 +2,7 @@
   {
     "id": "dashboard",
     "remoteName": "dashboard",
-    "address": "guinx@http://localhost:3003/remoteEntry.js"
+    "address": "dashboard@http://localhost:3002/remoteEntry.js"
   },
   {
     "id": "flows",

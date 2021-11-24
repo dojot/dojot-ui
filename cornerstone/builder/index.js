@@ -10,7 +10,7 @@ const logger = pino({
   },
 });
 
-const BaseConfig = require("./config.json");
+const BaseConfig = require("./internalModules.json");
 
 const DEFAULT_ITEMS = ["dashboard"]; // default Menu Items
 const MANDATORY_ITEMS = ["home"];

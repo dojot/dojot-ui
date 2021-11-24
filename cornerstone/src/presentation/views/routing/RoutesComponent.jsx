@@ -13,7 +13,7 @@ const LogIn = React.lazy(() => import("../login/Login"));
 
 const RequireAuth = ({ children }) => {
   const isAuth = isAuthenticated();
-  return isAuth ? children : <Navigate to="/login" />;
+  return !isAuth ? children : <Navigate to="/login" />;
 };
 
 RequireAuth.propTypes = {

@@ -9,7 +9,7 @@ const Home = React.lazy(() =>
 );
 
 const Dashboard = React.lazy(() =>
-  import("guinx/App").catch((err) => {
+  import("remote/Dashboard").catch((err) => {
     console.error(err.message);
     return import("../../presentation/views/notFound/notFound");
   }),
@@ -25,12 +25,12 @@ const Flows = React.lazy(() =>
 const routes = [
   {
     path: "/",
-    component: <Dashboard />,
+    component: <Dashboard app={{ name: "Dashboard" }} />,
     label: "Dashboard",
   },
   {
     path: "/dashboard",
-    component: <Dashboard />,
+    component: <Dashboard app={{ name: "Dashboard" }} />,
     label: "Dashboard",
   },
   {
