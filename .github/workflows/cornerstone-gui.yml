@@ -1,12 +1,12 @@
 name: cornerstone-gui
 
-# Triggered after a branch is created, a tag or a branch is pushed or a PR with changes in 'cornerstone-gui/**' is submitted
+# Triggered after a branch is created, a tag or a branch is pushed or a PR with changes in 'cornerstone/**' is submitted
 on:
   create:
   push:
   pull_request:
     paths:
-      - "cornerstone-gui/**"
+      - "cornerstone/**"
 jobs:
   unit-tests:
     name: (cornerstone-gui) Unit Tests #  Path to help identify each job in the status checks
@@ -35,7 +35,7 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
-          file: cornerstone-gui/src/coverage/lcov.info # Created when 'npm test' is executed
+          file: cornerstone/coverage/lcov.info # Created when 'npm test' is executed
           flags: cornerstoneGui # Flags allow you to isolate coverage reports for different tests
           name: cornerstone-gui # Custom name for the upload
 

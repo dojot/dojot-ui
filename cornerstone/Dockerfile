@@ -19,10 +19,12 @@ COPY yarn.lock yarn.lock
 RUN yarn install --only=prod
 
 # Copy Source
-COPY . . 
+COPY . .
 
-# Build code for production triggering the Builder
+# Build code for production
 RUN yarn run build
+
+# Run the Builder to updated the configuration
 RUN yarn builder
 
 # =====================

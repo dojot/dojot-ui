@@ -1,17 +1,22 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { DefinePlugin } = require("webpack");
 
-const config = require("./config/default.json");
 const { dependencies } = require("./package.json");
 const remoteList = require("./config/remotes.json");
+const config = require("./config/default.json");
 
 const BUNDLE_NAME = "cornerstone";
 
 module.exports = {
   entry: "./src/index",
   mode: "development",
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "[name].bundle.js",
+    publicPath: config.publicPath,
+  },
   devServer: {
     static: path.join(__dirname, "dist"),
     port: 3001,
@@ -19,17 +24,28 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
-  output: {
-    path: path.join(__dirname, "dist"),
-    filename: "bundle.js",
-    publicPath: config.publicPath,
-  },
+
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: "babel-loader",
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
+        loader: "babel-loader",
+        options: {
+          cacheDirectory: true,
+          presets: [
+            [
+              "@babel/preset-env",
+              {
+                targets: {
+                  esmodules: true,
+                },
+              },
+            ],
+            "@babel/preset-react",
+          ],
+          plugins: ["@babel/plugin-syntax-dynamic-import"],
+        },
       },
       {
         test: /\.css$/i,
@@ -42,6 +58,14 @@ module.exports = {
     ],
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+      favicon: "./public/favicon.ico",
+    }),
+    new DefinePlugin({
+      __CONFIG__: JSON.stringify(config),
+      GUI_VERSION: JSON.stringify(process.env.GUI_VERSION),
+    }),
     new ModuleFederationPlugin({
       // The Name used for module federation plugin will be "cornerstone"
       name: BUNDLE_NAME,
@@ -70,14 +94,6 @@ module.exports = {
           singleton: true,
         },
       },
-    }),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-      favicon: "./public/favicon.ico",
-    }),
-    new DefinePlugin({
-      __CONFIG__: JSON.stringify(config),
-      GUI_VERSION: JSON.stringify(process.env.GUI_VERSION),
     }),
   ],
 };

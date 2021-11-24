@@ -1,39 +1,16 @@
 [
   {
     "id": "dashboard",
-    "remoteName": "guinx",
-    "address": "guinx"
-  },
-  {
-    "id": "templates",
     "remoteName": "dashboard",
-    "address": "dashboard@http://localhost:3003/remoteEntry.js"
+    "address": "guinx@http://localhost:3003/remoteEntry.js"
   },
   {
     "id": "flows",
-    "remoteName": "guinx2",
-    "address": "guinx2"
+    "remoteName": "flowbroker-ui",
+    "address": "flowbroker-ui@http://localhost:9003/remoteEntry.js"
   },
-
   {
     "id": "notifications",
-    "remoteName": "guinx",
-    "address": "guinx"
-  },
-
-  {
-    "id": "profiles",
-    "remoteName": "guinx",
-    "address": "guinx"
-  },
-
-  {
-    "id": "users",
-    "remoteName": "guinx",
-    "address": "guinx"
-  },
-  {
-    "id": "home",
     "remoteName": "guinx",
     "address": "guinx"
   }
