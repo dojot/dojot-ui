@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { ThemeProvider } from "@material-ui/core/styles";
-import { HashRouter } from "react-router-dom";
-import PropTypes from "prop-types";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { getThemeSchema, THEME_TYPES } from "./presentation/themes";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { createHashHistory } from "history";
+import PropTypes from "prop-types";
+import { createElement, useEffect, useState } from "react";
+import { HashRouter } from "react-router-dom";
 
-import { history } from "./app-history";
-import { RoutesComponent } from "./presentation/views/routing";
 import { getTheme, setTheme } from "./adapters/localStorage/theme.localStorage";
+import { getThemeSchema, THEME_TYPES } from "./presentation/themes";
+import { RoutesComponent } from "./presentation/views/routing";
+
 import "./presentation/utils/i18n";
+// Exposing history for deep integration needs
+// For example, saga and utilities
+const history = createHashHistory();
 
 const App = () => {
   const [themeColor, setThemeColor] = useState(getTheme());
@@ -41,7 +45,7 @@ const ThemeContainer = ({ children, currentThemeSchema }) => (
 );
 
 ThemeContainer.defaultProps = {
-  children: React.createElement("div"),
+  children: createElement("div"),
 };
 
 ThemeContainer.propTypes = {

@@ -1,28 +1,28 @@
-import React from "react";
+import { lazy } from "react";
 
 /* importing MFE Applications */
-const Home = React.lazy(() =>
-  import("guinx/Home").catch((err) => {
+const Home = lazy(() =>
+  import("dashboard/Home").catch((err) => {
     console.error(err.message);
     return import("../../presentation/views/notFound/notFound");
   }),
 );
 
-const Dashboard = React.lazy(() =>
-  import("remote/Dashboard").catch((err) => {
+const Dashboard = lazy(() =>
+  import("dashboard/Dashboard").catch((err) => {
     console.error(err.message);
     return import("../../presentation/views/notFound/notFound");
   }),
 );
 
-const Flows = React.lazy(() =>
-  import("guinx/App").catch((err) => {
+const Flows = lazy(() =>
+  import("dashboard/App").catch((err) => {
     console.error(err.message);
     return import("../../presentation/views/notFound/notFound");
   }),
 );
 
-const routes = [
+const availableRoutes = [
   {
     path: "/",
     component: <Dashboard app={{ name: "Dashboard" }} />,
@@ -45,4 +45,4 @@ const routes = [
   },
 ];
 
-export default routes;
+export default availableRoutes;

@@ -1,15 +1,12 @@
-import React from "react";
-
 import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-
-import MenuIcon from "@material-ui/icons/Menu";
-import MenuOpenIcon from "@mui/icons-material/MenuOpen";
-
 import clsx from "clsx";
 import PropTypes from "prop-types";
+import { createElement } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useStyles } from "./AppHeader.style";
@@ -58,7 +55,7 @@ const AppHeader = ({ isMenuOpen, toggleMenu, title, children }) => {
 };
 
 AppHeader.defaultProps = {
-  children: React.createElement("div"),
+  children: createElement("div"),
 };
 
 AppHeader.propTypes = {

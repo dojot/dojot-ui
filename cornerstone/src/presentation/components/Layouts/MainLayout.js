@@ -1,12 +1,10 @@
-import React, { useState, useMemo } from "react";
-
-import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
+import { useMemo,useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import { Drawer } from "../Drawer";
+import { MENU_ITEMS,MENU_ITEMS_MAP } from "../../../domain/menu";
 import { ContentContainer, RootContainer, ViewContainer } from "../Containers";
-
-import { MENU_ITEMS_MAP, MENU_ITEMS } from "../../../domain/menu";
+import { Drawer } from "../Drawer";
 
 const MainLayout = ({ headerTitle, children }) => {
   const { t } = useTranslation("menu");

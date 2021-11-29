@@ -1,10 +1,9 @@
-import React from "react";
-
 import Alert from "@material-ui/lab/Alert";
-import { render, fireEvent, act } from "@testing-library/react";
+import { act, fireEvent, render } from "@testing-library/react";
 import { mount } from "enzyme";
-import { Authentication } from "Services";
-import * as api from "../../../adapters/services/graphql.api";
+import * as authenticationService from "./../../../adapters/services/authentication.service";
+
+import * as api from "../../../adapters/services/http.api";
 
 import Login from "./Login";
 
@@ -61,7 +60,7 @@ describe("Login", () => {
   });
 
   it("shoud be able to simple render Network error", async () => {
-    jest.spyOn(Authentication, "login").mockImplementationOnce(() => {
+    jest.spyOn(authenticationService, "login").mockImplementationOnce(() => {
       throw new Error("404");
     });
     const wrapper = mount(<Login />);
@@ -70,7 +69,7 @@ describe("Login", () => {
   });
 
   it("shoud be able to simple render Login Error", async () => {
-    jest.spyOn(Authentication, "login").mockImplementationOnce(() => {
+    jest.spyOn(authenticationService, "login").mockImplementationOnce(() => {
       throw new Error("Erro ao efetuar login");
     });
     const wrapper = mount(<Login />);

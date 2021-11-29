@@ -1,14 +1,12 @@
-import {
-  Dashboard,
-  DeviceHub,
-  DevicesOther,
-  FilterNone,
-  Home,
-  NotificationImportant,
-  People,
-  SupervisedUserCircle,
-  VerifiedUser,
-} from "@material-ui/icons";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import DeviceHubIcon from "@mui/icons-material/DeviceHub";
+import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
+import FilterNoneIcon from "@mui/icons-material/FilterNone";
+import HomeIcon from "@mui/icons-material/Home";
+import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
+import PeopleIcon from "@mui/icons-material/People";
+import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 
 const MENU_ITEMS_MAP = {
   flows: {
@@ -16,63 +14,63 @@ const MENU_ITEMS_MAP = {
     i18n: "flows",
     label: "Fluxos",
     path: "/flows",
-    icon: DeviceHub,
+    icon: DeviceHubIcon,
   },
   notifications: {
     visible: true,
     i18n: "notifications",
     label: "Notificações",
     path: "/notification",
-    icon: NotificationImportant,
+    icon: NotificationImportantIcon,
   },
   users: {
     visible: true,
     i18n: "users",
     label: "Usuários",
     path: "/users",
-    icon: People,
+    icon: PeopleIcon,
   },
   profiles: {
     visible: true,
     i18n: "profiles",
     label: "Perfis",
     path: "/profiles",
-    icon: SupervisedUserCircle,
+    icon: SupervisedUserCircleIcon,
   },
   home: {
     visible: true,
     i18n: "home",
     label: "home",
     path: "/home",
-    icon: Home,
+    icon: HomeIcon,
   },
   dashboard: {
     visible: true,
     i18n: "dashboard",
     label: "Dashboard",
     path: "/dashboard",
-    icon: Dashboard,
+    icon: DashboardIcon,
   },
   devices: {
     visible: true,
     i18n: "devices",
     label: "Dispositivos",
     path: "/devices",
-    icon: DevicesOther,
+    icon: DevicesOtherIcon,
   },
   templates: {
     visible: true,
     i18n: "templates",
     label: "Modelos",
     path: "/templates",
-    icon: FilterNone,
+    icon: FilterNoneIcon,
   },
   security: {
     visible: true,
     i18n: "security",
     label: "Segurança",
     path: "/certification-authorities",
-    icon: VerifiedUser,
+    icon: VerifiedUserIcon,
   },
 };
 

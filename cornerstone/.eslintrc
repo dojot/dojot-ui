@@ -6,6 +6,7 @@
   },
   "env": {
     "browser": true,
+    "es2021": true,
     "jest": true,
     "es6": true,
     "node": true
@@ -13,23 +14,48 @@
   "parser": "@babel/eslint-parser",
   "parserOptions": {
     // Required for certain syntax usages
-    "ecmaVersion": 2020
+    "ecmaVersion": 2020,
+    "sourceType": "module"
   },
-  "plugins": [],
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
+  "plugins": ["simple-import-sort"],
   "extends": [
-    "prettier",
     "airbnb-base",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:security/recommended"
+    "plugin:security/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:import/recommended",
+    "prettier"
   ],
   "rules": {
+    "sort-imports": [
+      "warn",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["all", "multiple", "single", "none"]
+      }
+    ],
     "no-param-reassign": "off",
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "groups": ["builtin", "external", "index", "parent", "sibling"]
+      }
+    ],
     "import/prefer-default-export": "off",
     "import/extensions": ["off", { "json": "always" }],
-    "function-paren-newline": "off",
     "import/no-unresolved": [0, { "commonjs": true, "amd": true }],
+    "function-paren-newline": "off",
     "comma-dangle": [
       0,
       {

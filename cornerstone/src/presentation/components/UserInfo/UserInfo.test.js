@@ -1,11 +1,9 @@
-import React from "react";
-
-import { render, act, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
-import * as storage from "../../../adapters/localStorage/login.localStorage";
-import * as auth from "../../../adapters/services/authentication.service";
+import { act, fireEvent, render } from "@testing-library/react";
 
 import { UserInfo } from "./index";
+
+import * as storage from "../../../adapters/localStorage/login.localStorage";
+import * as auth from "../../../adapters/services/authentication.service";
 
 const mockNavigate = jest.fn().mockImplementation((path) => path);
 

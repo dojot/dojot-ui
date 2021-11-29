@@ -1,11 +1,6 @@
-import React from "react";
-
 import PropTypes from "prop-types";
-import { AppHeader } from "../Header";
-// import { connect } from "react-redux";
-// import { actions as layoutActions } from "Redux/base";
-// import { menuSelector } from "Selectors/baseSelector";
 
+import { AppHeader } from "../Header";
 import { UserInfo } from "../UserInfo";
 
 const ViewContainer = ({ headerTitle, headerContent, setIsMenuOpen, isMenuOpen }) => (
@@ -30,15 +25,5 @@ ViewContainer.defaultProps = {
   headerTitle: "",
   isMenuOpen: true,
 };
-
-// const mapStateToProps = (state) => ({
-//   ...menuSelector(state),
-// });
-
-// const mapDispatchToProps = {
-//   ...layoutActions,
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(ViewContainer);
 
 export default ViewContainer;

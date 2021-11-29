@@ -1,5 +1,6 @@
 import axios from "axios";
-import { getToken, clearUserData } from "../localStorage/login.localStorage";
+
+import { clearUserData, getToken } from "../localStorage/login.localStorage";
 
 const { apiUrl } = __CONFIG__;
 const instance = axios.create({ baseURL: apiUrl });

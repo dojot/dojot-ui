@@ -1,4 +1,5 @@
 import { createTheme } from "@material-ui/core/styles";
+
 import dojotLogo from "../assets/images/dojotLogoDark.png";
 
 const theme = createTheme({

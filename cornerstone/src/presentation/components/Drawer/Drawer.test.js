@@ -1,6 +1,7 @@
-import React from "react";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import FilterNoneIcon from "@mui/icons-material/DeviFilterNoneceHub";
+import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
 
-import { Dashboard, DevicesOther, FilterNone } from "@material-ui/icons";
 import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 
@@ -14,21 +15,21 @@ const initialProps = {
       i18n: "devices",
       label: "Dispositivos",
       path: "/devices",
-      icon: DevicesOther,
+      icon: DevicesOtherIcon,
     },
     {
       visible: true,
       label: "Modelos",
       i18n: "templates",
       path: "/templates",
-      icon: FilterNone,
+      icon: FilterNoneIcon,
     },
     {
       visible: false,
       i18n: "dashboard",
       label: "Dashboard",
       path: "/dashboard",
-      icon: Dashboard,
+      icon: DashboardIcon,
     },
   ],
 };

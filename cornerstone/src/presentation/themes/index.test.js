@@ -1,6 +1,4 @@
-import { getThemeSchema, THEME_TYPES } from "./index";
-import light from "./light";
-import dark from "./dark";
+import { dark, getThemeSchema, light, THEME_TYPES } from "./index";
 
 describe("Theme Unit Tests", () => {
   it("1. should be able to get the light theme schema", () => {

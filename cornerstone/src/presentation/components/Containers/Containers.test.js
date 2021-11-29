@@ -1,10 +1,9 @@
-import React from "react";
-
 import { render } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
 
-import RootContainer from "./RootContainer";
+import { MemoryRouter } from "react-router-dom";
+
 import ContentContainer from "./ContentContainer";
+import RootContainer from "./RootContainer";
 import ViewContainer from "./ViewContainer";
 
 describe("Containers unit tests", () => {
@@ -28,7 +27,9 @@ describe("Containers unit tests", () => {
 
   it("should to able simple render the ViewContainer ", () => {
     const { container } = render(
-      <ViewContainer headerTitle={"title"} setIsMenuOpen={() => null} isMenuOpen />,
+      <MemoryRouter initialEntries={["/"]}>
+        <ViewContainer headerTitle={"title"} setIsMenuOpen={() => null} isMenuOpen />
+      </MemoryRouter>,
     );
 
     expect(container).toBeInTheDocument();

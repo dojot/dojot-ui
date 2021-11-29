@@ -45,6 +45,7 @@ As the new approach to Dojot GUI's, this service doesn't need any dependecies.
 
 ## Roadmap
 
+- Create the Not Found page;
 - Apply useMemo in some functions;
 - Apply lighthouse schema validator;
 
@@ -54,25 +55,35 @@ As the new approach to Dojot GUI's, this service doesn't need any dependecies.
 
 ## Running the Application
 
-### `yarn dev`
+```shell
+`yarn builder`
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
+Runs the Builder to bind the services in Cornerstone (inserted via ENV variables);
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```shell
+`yarn dev`
+```
 
-### `yarn test`
+Runs the Cornerstone-GUI with webpack-dev-server in development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits and you could see any lint errors in the console.
+
+```shell
+`yarn test`
+```
 
 Launches the test runner in the interactive watch mode.<br>
 
-### `yarn build`
+```shell
+`yarn build`
+```
 
-Builds the app for production to the `build` folder.<br>
+Builds the app for production to the `dist` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
 ### Configurations
 

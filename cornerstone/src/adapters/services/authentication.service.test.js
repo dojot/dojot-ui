@@ -1,5 +1,4 @@
-import * as api from "./graphql.api";
-
+import * as api from "./http.api";
 import * as authenticationService from "./authentication.service";
 
 const mockLogin = jest.fn();

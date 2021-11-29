@@ -14,7 +14,7 @@ jobs:
     if: contains(github.event.head_commit.message, 'ci skip') == false # If the commit message contains 'ci skip', it won't be necessary to run this job
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -26,7 +26,7 @@ jobs:
 
       - name: npm check-licenses and test
         run: |
-          cd cornerstone-gui
+          cd cornerstone
           npm ci
           npm run lint
           npm run check-licenses
@@ -36,7 +36,7 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           file: cornerstone/coverage/lcov.info # Created when 'npm test' is executed
-          flags: cornerstoneGui # Flags allow you to isolate coverage reports for different tests
+          flags: cornerstone # Flags allow you to isolate coverage reports for different tests
           name: cornerstone-gui # Custom name for the upload
 
   docker-hub:

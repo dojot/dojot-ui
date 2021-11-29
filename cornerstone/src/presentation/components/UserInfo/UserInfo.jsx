@@ -1,30 +1,30 @@
-import React, { useState, useRef } from "react";
-
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import {
+  Button,
+  ClickAwayListener,
+  Divider,
   Grow,
   List,
-  Paper,
-  Button,
-  Popper,
-  Divider,
   ListItem,
-  ListItemText,
   ListItemIcon,
-  ClickAwayListener,
+  ListItemText,
+  Paper,
+  Popper,
 } from "@material-ui/core";
-
+import LockIcon from "@mui/icons-material/Lock";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import { ArrowDropDown, ExitToApp, Lock } from "@material-ui/icons";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
+import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import { getUserInformation } from "../../../adapters/localStorage/login.localStorage";
 import { logout } from "../../../adapters/services/authentication.service";
-
 import { getTheme, setTheme } from "../../../adapters/localStorage/theme.localStorage";
 import { THEME_TYPES } from "../../themes";
+
 import { useStyles } from "./UserInfo.style";
 
 const UserInfo = () => {
@@ -77,8 +77,8 @@ const UserInfo = () => {
           className={classes.button}
           color="inherit"
           onClick={handleToggle}
-          startIcon={<AccountCircle />}
-          endIcon={<ArrowDropDown />}
+          startIcon={<AccountCircleIcon />}
+          endIcon={<ArrowDropDownIcon />}
           aria-haspopup="true"
           data-testid="menuButton"
           aria-controls={open ? "menu-list-grow" : undefined}>
@@ -137,7 +137,7 @@ const UserInfo = () => {
                       className={classes.clickableListItem}
                       onClick={handleChangePassword}>
                       <ListItemIcon className={classes.listItemIcon}>
-                        <Lock />
+                        <LockIcon />
                       </ListItemIcon>
                       <ListItemText>{t("changePassword")}</ListItemText>
                     </ListItem>
@@ -147,7 +147,7 @@ const UserInfo = () => {
                       className={classes.clickableListItem}
                       onClick={handleLogout}>
                       <ListItemIcon className={classes.listItemIcon}>
-                        <ExitToApp />
+                        <ExitToAppIcon />
                       </ListItemIcon>
                       <ListItemText>{t("logout")}</ListItemText>
                     </ListItem>

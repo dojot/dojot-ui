@@ -1,10 +1,8 @@
-import React from "react";
-
 import { Drawer, ListItemIcon, ListItemText, MenuItem, MenuList } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import { Link, useLocation } from "react-router-dom";
-import { useTheme } from "@material-ui/core/styles";
 
 import { useStyles } from "./Drawer.style";
 

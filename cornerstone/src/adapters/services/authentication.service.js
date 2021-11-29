@@ -1,9 +1,10 @@
-import { unprotectedAPI } from "./graphql.api";
 import {
+  clearUserData,
   isAuthenticated,
   login as loginAction,
-  clearUserData,
 } from "../localStorage/login.localStorage";
+
+import { unprotectedAPI } from "./http.api";
 
 const GQL_USER_TOKEN = `
   mutation login($username: String, $passwd: String) {
