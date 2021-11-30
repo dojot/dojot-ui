@@ -1,7 +1,6 @@
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import FilterNoneIcon from "@mui/icons-material/DeviFilterNoneceHub";
+import FilterNoneIcon from "@mui/icons-material/FilterNone";
 import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
-
 import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 

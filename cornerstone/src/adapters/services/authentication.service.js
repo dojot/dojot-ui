@@ -1,8 +1,4 @@
-import {
-  clearUserData,
-  isAuthenticated,
-  login as loginAction,
-} from "../localStorage/login.localStorage";
+import { clearUserData, isAuthenticated, setUserData } from "../localStorage/login.localStorage";
 
 import { unprotectedAPI } from "./http.api";
 
@@ -35,7 +31,7 @@ export const login = async ({ user, password }) => {
   if (!response.login) {
     throw new Error("Erro ao efetuar login");
   }
-  loginAction(response.login.jwt);
+  setUserData(response.login.jwt);
   return isAuthenticated();
 };
 

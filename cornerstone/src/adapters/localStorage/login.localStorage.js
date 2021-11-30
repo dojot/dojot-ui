@@ -2,7 +2,7 @@ export const isAuthenticated = () => localStorage.getItem("TOKEN_KEY") !== null;
 
 export const getToken = () => localStorage.getItem("TOKEN_KEY");
 
-export const login = (token) => {
+export const setUserData = (token) => {
   // Token information: generalInfo, userInfo, check
   const [, userInfo] = token.split(".");
   const { profile, service, username } = JSON.parse(atob(userInfo));

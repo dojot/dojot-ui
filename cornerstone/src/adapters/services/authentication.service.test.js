@@ -1,21 +1,26 @@
 import * as api from "./http.api";
 import * as authenticationService from "./authentication.service";
 
-const mockLogin = jest.fn();
-const mockClearUserData = jest.fn();
+const mockLogin = jest.fn().mockImplementation((user) => user);
+const mockClearUserData = jest.fn(() => null);
+const mockIsAuthenticated = jest.fn().mockReturnValueOnce(true);
+
 jest.mock("../localStorage/login.localStorage", () => ({
-  login: mockLogin,
-  clearUserData: mockClearUserData,
+  setUserData: (jwt) => mockLogin(jwt),
+  isAuthenticated: () => mockIsAuthenticated,
+  clearUserData: () => mockClearUserData(),
+}));
+
+jest.mock("./http.api", () => ({
+  unprotectedAPI: jest.fn(() => ({
+      login: {
+        jwt: "jwt-token",
+      },
+    })),
 }));
 
 describe("authentication.service", () => {
   it("should be able to authenticate a user", async () => {
-    jest.spyOn(api, "unprotectedAPI").mockImplementationOnce(() => ({
-      login: {
-        jwt: "jwt-token",
-      },
-    }));
-
     await authenticationService.login({ user: "user", password: "password" });
     expect(mockLogin).toHaveBeenCalledWith("jwt-token");
   });

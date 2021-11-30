@@ -1,17 +1,16 @@
 import Alert from "@material-ui/lab/Alert";
 import { act, fireEvent, render } from "@testing-library/react";
 import { mount } from "enzyme";
-import * as authenticationService from "./../../../adapters/services/authentication.service";
 
-import * as api from "../../../adapters/services/http.api";
+import * as authenticationService from "../../../adapters/services/authentication.service";
 
 import Login from "./Login";
 
-jest.mock("react-router-dom", () => ({
-  Redirect: jest.fn((options) => <div>{options.to.pathname}</div>),
-}));
+const mockNavigate = jest.fn((path) => path);
 
-const DEFAULT_JWT = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9";
+jest.mock("react-router-dom", () => ({
+  useNavigate: jest.fn().mockImplementation(() => mockNavigate),
+}));
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({
@@ -99,16 +98,12 @@ describe("Login", () => {
   });
 
   it("should log in correctly", async () => {
-    jest.spyOn(api, "unprotectedAPI").mockImplementationOnce(() => ({
-      login: {
-        jwt: DEFAULT_JWT,
-      },
-      user: { profile: "test", user: DEFAULT_USER },
-    }));
+    jest.spyOn(authenticationService, "login").mockImplementationOnce(() => true);
 
     const wrapper = mount(<Login />);
     await setUserAndSubmit(wrapper, DEFAULT_USER, DEFAULT_PASS);
-    expect(wrapper.find("div").text()).toEqual("/dashboard");
+
+    expect(mockNavigate).toHaveBeenCalledWith("/dashboard");
     wrapper.unmount();
   });
 });

@@ -25,12 +25,12 @@ const Flows = lazy(() =>
 const availableRoutes = [
   {
     path: "/",
-    component: <Dashboard app={{ name: "Dashboard" }} />,
+    component: <Dashboard />,
     label: "Dashboard",
   },
   {
     path: "/dashboard",
-    component: <Dashboard app={{ name: "Dashboard" }} />,
+    component: <Dashboard />,
     label: "Dashboard",
   },
   {
