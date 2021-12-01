@@ -1,7 +1,7 @@
 const { merge } = require("webpack-merge");
 const dev = require("./webpack.dev.js");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = merge(dev, {
   mode: "production",
@@ -28,7 +28,21 @@ module.exports = merge(dev, {
       },
     ],
   },
+  plugins: [new MiniCssExtractPlugin()],
+  performance: {
+    hints: false,
+  },
   optimization: {
-    minimizer: [new UglifyJsPlugin()],
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false, // removes license.txt
+        terserOptions: {
+          format: {
+            comments: false, // removes also comments inside the bundle
+          },
+        },
+      }),
+    ],
   },
 });

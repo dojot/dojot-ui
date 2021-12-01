@@ -15,7 +15,7 @@ ENV BUILDER_MENU_ITENS=$BUILDER_MENU_ITENS
 
 # Install app dependencies for production
 COPY package.json package.json
-COPY yarn.lock yarn.lock
+COPY package-lock.json package-lock.json
 RUN yarn install --only=prod
 
 # Copy Source

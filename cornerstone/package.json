@@ -8,12 +8,11 @@
   },
   "main": "index.js",
   "scripts": {
+    "dev": "NODE_ENV=development webpack-dashboard -c green -t dashboard -- node bin/commands.js dev",
+    "build": "NODE_ENV=production  node bin/commands.js build",
+    "lint": "node bin/commands.js lint",
     "builder": "node ./builder/index.js",
     "test": "jest '(/src/.*)(.test.js)' --verbose --coverage",
-    "lint": "eslint ./src/ --ext .js,.jsx",
-    "lint:fix": "eslint ./src/ --fix --ext .js,.jsx",
-    "dev": "webpack-dev-server ./src/index.js --config webpack.dev.js",
-    "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "serve": "serve dist -p 3001",
     "clean": "rm -rf dist",
     "check-licenses": "apache2-license-checker"
@@ -56,6 +55,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.2",
     "serve": "13.0.2",
+    "shelljs": "^0.8.4",
     "style-loader": "^3.3.1",
     "uglifyjs-webpack-plugin": "^1.1.2",
     "webpack": "^5.64.1",
@@ -74,6 +74,7 @@
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "codecov": "^3.8.3",
     "enzyme": "^3.11.0",
     "eslint": "^8.2.0",
@@ -90,6 +91,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.3.1",
     "prettier": "^2.4.1",
+    "webpack-dashboard": "^3.3.6",
     "webpack-dev-server": "^4.5.0"
   },
   "jest": {
