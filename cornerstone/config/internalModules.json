@@ -1,0 +1,17 @@
+[
+  {
+    "id": "dashboard",
+    "remoteName": "dashboard",
+    "address": "dashboard@http://localhost:3002/remoteEntry.js"
+  },
+  {
+    "id": "flows",
+    "remoteName": "flowbroker-ui",
+    "address": "flowbroker-ui@http://localhost:9003/remoteEntry.js"
+  },
+  {
+    "id": "notifications",
+    "remoteName": "guinx",
+    "address": "guinx"
+  }
+]

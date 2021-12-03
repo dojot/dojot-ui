@@ -1,0 +1,90 @@
+{
+  "globals": {
+    "localStorage": true,
+    "GUI_VERSION": true,
+    "__CONFIG__": true
+  },
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    // Required for certain syntax usages
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
+  "plugins": ["simple-import-sort"],
+  "extends": [
+    "airbnb-base",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:security/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:import/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "sort-imports": [
+      "warn",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["all", "multiple", "single", "none"]
+      }
+    ],
+    "no-param-reassign": "off",
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "groups": ["builtin", "external", "index", "parent", "sibling"]
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "import/extensions": ["off", { "json": "always" }],
+    "import/no-unresolved": [0, { "commonjs": true, "amd": true }],
+    "function-paren-newline": "off",
+    "comma-dangle": [
+      0,
+      {
+        "arrays": "always",
+        "objects": "never",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ],
+    "object-curly-newline": "off",
+    "quotes": ["error", "double"],
+    "implicit-arrow-linebreak": "off",
+    "arrow-parens": ["warn", "always"],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to", "hrefLeft", "hrefRight"],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
+      }
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 2,
+        "maxBOF": 1,
+        "maxEOF": 0
+      }
+    ]
+  }
+}
