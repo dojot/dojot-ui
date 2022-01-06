@@ -61,6 +61,6 @@ jobs:
           name: ${{ steps.get_owner.outputs.owner }}/cornerstone-gui
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          workdir: cornerstone-gui
+          workdir: cornerstone
           buildoptions: " --label commit_sha_dojot=${{ github.sha }} --build-arg DOJOT_VERSION=${{ steps.release_version.outputs.version }}" # label with commit that built image
           tag_names: true # Whether tag will be based in the branch name or in the tag name
