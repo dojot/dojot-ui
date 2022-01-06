@@ -1,0 +1,134 @@
+{
+  "name": "cornerstone-gui-nx",
+  "version": "0.0.1",
+  "description": "The Cornerstone-GUI is responsible for creating menu and module federation to be used in microfrontend ecosystem.",
+  "engines": {
+    "node": ">=14.17",
+    "npm": ">=6.14"
+  },
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development webpack-dashboard -c green -t dashboard -- node bin/commands.js dev",
+    "build": "NODE_ENV=production node bin/commands.js build",
+    "lint": "node bin/commands.js lint",
+    "builder": "node ./builder/index.js",
+    "test": "jest '(/src/.*)(.test.js)' --verbose --coverage",
+    "serve": "serve dist -p 3001",
+    "clean": "rm -rf dist",
+    "check-licenses": "apache2-license-checker"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dojot/dojot-ui"
+  },
+  "keywords": [
+    "dojot",
+    "builder"
+  ],
+  "author": "Francisco Angelo Cabelo",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/dojot",
+  "dependencies": {
+    "@emotion/react": "^11.6.0",
+    "@emotion/styled": "^11.6.0",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@mui/icons-material": "^5.1.0",
+    "@mui/material": "^5.1.0",
+    "axios": "^0.24.0",
+    "babel-loader": "^8.2.3",
+    "bundle-loader": "0.5.6",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "clsx": "^1.1.1",
+    "css-loader": "^6.5.1",
+    "file-loader": "^6.2.0",
+    "formik": "^2.2.9",
+    "history": "^5.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "i18next": "^21.5.2",
+    "mini-css-extract-plugin": "^2.4.5",
+    "pino": "^7.4.0",
+    "pino-pretty": "^7.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.14.1",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.0.2",
+    "serve": "13.0.2",
+    "shelljs": "^0.8.4",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.64.1",
+    "webpack-cli": "4.9.1",
+    "webpack-merge": "^5.8.0",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/eslint-parser": "^7.16.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-react-jsx": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "@bbc/apache2-license-checker": "^1.1.4",
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^12.1.2",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
+    "codecov": "^3.8.3",
+    "enzyme": "^3.11.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-import": "^0.13.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.27.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.3.1",
+    "prettier": "^2.4.1",
+    "webpack-dashboard": "^3.3.6",
+    "webpack-dev-server": "^4.5.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "clearMocks": true,
+    "testTimeout": 30000,
+    "coverageDirectory": "<rootDir>/coverage",
+    "coverageProvider": "v8",
+    "coverageThreshold": {
+      "global": {
+        "branches": 75,
+        "functions": 75,
+        "lines": 75,
+        "statements": 75
+      }
+    },
+    "moduleNameMapper": {
+      ".+\\.(styl|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
+    },
+    "testEnvironment": "jest-environment-jsdom",
+    "verbose": true,
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.js"
+    ],
+    "modulePathIgnorePatterns": [
+      "node_modules"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/coverage"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "globals": {
+      "__CONFIG__": true,
+      "GUI_VERSION": true
+    }
+  }
+}

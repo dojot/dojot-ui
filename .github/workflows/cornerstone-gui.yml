@@ -1,12 +1,12 @@
 name: cornerstone-gui
 
-# Triggered after a branch is created, a tag or a branch is pushed or a PR with changes in 'cornerstone-gui/**' is submitted
+# Triggered after a branch is created, a tag or a branch is pushed or a PR with changes in 'cornerstone/**' is submitted
 on:
   create:
   push:
   pull_request:
     paths:
-      - "cornerstone-gui/**"
+      - "cornerstone/**"
 jobs:
   unit-tests:
     name: (cornerstone-gui) Unit Tests #  Path to help identify each job in the status checks
@@ -14,7 +14,7 @@ jobs:
     if: contains(github.event.head_commit.message, 'ci skip') == false # If the commit message contains 'ci skip', it won't be necessary to run this job
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -26,7 +26,7 @@ jobs:
 
       - name: npm check-licenses and test
         run: |
-          cd cornerstone-gui/js
+          cd cornerstone
           npm ci
           npm run lint
           npm run check-licenses
@@ -35,8 +35,8 @@ jobs:
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
-          file: cornerstone-gui/js/coverage/lcov.info # Created when 'npm test' is executed
-          flags: cornerstoneGui # Flags allow you to isolate coverage reports for different tests
+          file: cornerstone/coverage/lcov.info # Created when 'npm test' is executed
+          flags: cornerstone # Flags allow you to isolate coverage reports for different tests
           name: cornerstone-gui # Custom name for the upload
 
   docker-hub:
@@ -61,6 +61,6 @@ jobs:
           name: ${{ steps.get_owner.outputs.owner }}/cornerstone-gui
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          workdir: cornerstone-gui
-          buildoptions: " --label 'commit_sha'='${{ github.sha }}' " # Label with the built image's commit
+          workdir: cornerstone
+          buildoptions: " --label commit_sha_dojot=${{ github.sha }} --build-arg DOJOT_VERSION=${{ steps.release_version.outputs.version }}" # label with commit that built image
           tag_names: true # Whether tag will be based in the branch name or in the tag name
